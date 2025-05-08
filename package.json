@@ -5,7 +5,7 @@
   "types": "dist/index.d.ts",
   "scripts": {
     "build": "tsc",
-    "prepare": "npm run build",
+    "prepare": "npm install && npm run build",
     "prepack": "npm run build",
     "migrate:generate": "drizzle-kit generate",
     "migrate:apply": "drizzle-kit migrate",
