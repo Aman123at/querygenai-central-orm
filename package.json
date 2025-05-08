@@ -1,0 +1,43 @@
+{
+  "name": "@querygenai/db",
+  "version": "1.0.0",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "build": "tsc",
+    "prepack": "npm run build",
+    "migrate:generate": "drizzle-kit generate",
+    "migrate:apply": "drizzle-kit migrate",
+    "migrate:push": "drizzle-kit push",
+    "start": "nodemon --watch *.ts --exec ts-node test.ts"
+  },
+  "files": [
+    "dist/**/*",
+    "src/schemas/**/*.ts",
+    "drizzle.config.ts"
+  ],
+  "keywords": [
+    "drizzle",
+    "postgres",
+    "querygenai"
+  ],
+  "author": "Aman Tiwari",
+  "license": "ISC",
+  "description": "Common database layer for QueryGenAI",
+  "devDependencies": {
+    "@types/node": "^22.15.16",
+    "@types/pg": "^8.15.0",
+    "drizzle-kit": "^0.31.1",
+    "nodemon": "^3.1.10",
+    "ts-node": "^10.9.2",
+    "tsx": "^4.19.4",
+    "typescript": "^5.8.3"
+  },
+  "dependencies": {
+    "dotenv": "^16.5.0",
+    "drizzle-orm": "^0.43.1",
+    "pg": "^8.15.6",
+    "postgres": "^3.4.5",
+    "uuid": "^11.1.0"
+  }
+}
