@@ -9,8 +9,7 @@
     "postinstall": "npm run build",
     "migrate:generate": "drizzle-kit generate",
     "migrate:apply": "drizzle-kit migrate",
-    "migrate:push": "drizzle-kit push",
-    "start": "nodemon --watch *.ts --exec ts-node test.ts"
+    "migrate:push": "drizzle-kit push"
   },
   "files": [
     "dist/**/*",

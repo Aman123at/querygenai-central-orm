@@ -1,5 +1,10 @@
-import { pgTable, serial, text, timestamp, uniqueIndex, varchar } from "drizzle-orm/pg-core";
+import { integer, pgEnum, pgTable, serial, text, timestamp, uniqueIndex, varchar } from "drizzle-orm/pg-core";
 
+export const authTypeEnum = pgEnum("auth_type", ["email", "google", "github"]);
+
+export const tierEnum = pgEnum("tier", ["basic","premium"]);
+
+export const roleEnum = pgEnum("role", ["admin", "user"]);
 
 export const users = pgTable(
     "users",
@@ -9,6 +14,15 @@ export const users = pgTable(
       email: text("email").notNull().unique(),
       firstName: text("first_name"),
       lastName: text("last_name"),
+      password: text("password"),
+      auth_type: authTypeEnum().notNull().default("email"),
+      credits_available: integer("credits_available").notNull().default(10),
+      credit_renewal_date: timestamp("credit_renewal_date"),
+      tier: tierEnum().notNull().default("basic"),
+      role: roleEnum().notNull().default("user"),
+      country: varchar("country", { length: 50 }),
+      city: varchar("city", { length: 50 }),
+      zipcode: varchar("zipcode", { length: 10 }),
       profilePictureUrl: text("profile_picture_url"),
       createdAt: timestamp("created_at").notNull().defaultNow(),
       updatedAt: timestamp("updated_at").notNull().defaultNow(),
